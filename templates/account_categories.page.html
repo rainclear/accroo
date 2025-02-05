@@ -1,7 +1,7 @@
 {{template "base" .}}
 
 {{define "content"}}
-    <h1>List of Account Types.  Neither the list nor each element of the list is editable.</h1>
+    <h1>List of Account Categories.</h1>
     <p>
         {{ range $key, $value := .StringMap }}
             <li>{{ $value }}</li>

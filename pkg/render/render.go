@@ -12,7 +12,7 @@ import (
 	"github.com/rainclear/accroo/pkg/models"
 )
 
-var functions = template.FuncMap{}
+// var functions = template.FuncMap{}
 
 var app *config.AppConfig
 

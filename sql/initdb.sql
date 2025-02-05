@@ -8,9 +8,9 @@ CREATE TABLE AccountTypes (
   AccountType varchar(256) UNIQUE NOT NULL
 );
 
-CREATE TABLE AccountRoles (
+CREATE TABLE AccountCategories (
   id INTEGER PRIMARY KEY,
-  AccountRole varchar(256) UNIQUE NOT NULL
+  AccountCategory varchar(256) UNIQUE NOT NULL
 );
 
 CREATE TABLE Accounts (
@@ -20,13 +20,14 @@ CREATE TABLE Accounts (
   OpeningDate date NOT NULL,
   OpeningBalance decimal(20, 2) NOT NULL DEFAULT 0,
   AccountNumber varchar(256),
+  Institution varchar(256) NOT NULL,
   Currency_id int NOT NULL,
   AccountType_id int NOT NULL,
-  AccountRole_id int NOT NULL,
+  AccountCategory_id int NOT NULL,
   Notes varchar(512),
   FOREIGN KEY (Currency_id) REFERENCES Currencies(id),
   FOREIGN KEY (AccountType_id) REFERENCES AccountTypes(id),
-  FOREIGN KEY (AccountRole_id) REFERENCES AccountRoles(id)
+  FOREIGN KEY (AccountCategory_id) REFERENCES AccountCategories(id)
 );
 
 CREATE TABLE TransactionCategories (
@@ -79,11 +80,11 @@ INSERT INTO AccountTypes (AccountType) VALUES ('Income');
 
 INSERT INTO AccountTypes (AccountType) VALUES ('Liabilities');
 
-INSERT INTO AccountRoles (AccountRole) VALUES ('Chequing');
+INSERT INTO AccountCategories (AccountCategory) VALUES ('Chequing');
 
-INSERT INTO AccountRoles (AccountRole) VALUES ('Savings');
+INSERT INTO AccountCategories (AccountCategory) VALUES ('Savings');
 
-INSERT INTO AccountRoles (AccountRole) VALUES ('TFSA');
+INSERT INTO AccountCategories (AccountCategory) VALUES ('TFSA');
 
 INSERT INTO TransactionTypes (TransType) VALUES ('Expense');
 
